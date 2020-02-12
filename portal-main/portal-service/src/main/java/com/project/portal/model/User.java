@@ -1,4 +1,4 @@
-package com.project.portal.server.model;
+package com.project.portal.model;
 
 import java.util.Date;
 

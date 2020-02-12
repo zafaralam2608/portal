@@ -1,4 +1,4 @@
-package com.project.portal.server.rest.controller;
+package com.project.portal.rest.controller;
 
 import java.util.Optional;
 

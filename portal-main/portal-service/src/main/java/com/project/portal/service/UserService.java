@@ -1,4 +1,4 @@
-package com.project.portal.server.service;
+package com.project.portal.service;
 
 import java.util.Optional;
 

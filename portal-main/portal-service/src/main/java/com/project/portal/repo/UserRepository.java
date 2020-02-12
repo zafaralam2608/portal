@@ -1,4 +1,4 @@
-package com.project.portal.server.repo;
+package com.project.portal.repo;
 
 import org.springframework.data.solr.repository.SolrCrudRepository;
 
