@@ -14,6 +14,7 @@
 		<version.solr>8.4.1</version.solr>
 		<version.spring>5.2.3.RELEASE</version.spring>
 		<version.jdk>1.8</version.jdk>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
