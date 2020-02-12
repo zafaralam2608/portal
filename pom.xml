@@ -11,8 +11,8 @@
 		<module>portal-webapp</module>
 	</modules>
 	<properties>
-		<version.solr>8.3.0</version.solr>
-		<version.spring>5.2.1.RELEASE</version.spring>
+		<version.solr>8.4.1</version.solr>
+		<version.spring>5.2.3.RELEASE</version.spring>
 		<version.jdk>1.8</version.jdk>
 	</properties>
 	<dependencyManagement>
@@ -45,7 +45,7 @@
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-solr</artifactId>
-				<version>4.1.1.RELEASE</version>
+				<version>4.1.4.RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>

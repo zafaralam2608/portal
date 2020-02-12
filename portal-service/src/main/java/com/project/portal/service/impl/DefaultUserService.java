@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.portal.server.model.User;
-import com.project.portal.server.repo.UserRepository;
-import com.project.portal.server.service.UserService;
+import com.project.portal.model.User;
+import com.project.portal.repo.UserRepository;
+import com.project.portal.service.UserService;
 
 @Service
 public class DefaultUserService implements UserService {

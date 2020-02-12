@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.portal.server.model.User;
-import com.project.portal.server.service.UserService;
+import com.project.portal.model.User;
+import com.project.portal.service.UserService;
 
 @RestController
 public class UserController {
