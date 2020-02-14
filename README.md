@@ -1,2 +1,2 @@
 # portal
-practice application
+Simple application with User model called by REST
