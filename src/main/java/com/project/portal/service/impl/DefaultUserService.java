@@ -15,7 +15,7 @@ public class DefaultUserService implements UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public Optional<User> findById(String id) {
+	public Optional<User> findById(long id) {
 		return userRepository.findById(id);
 	}
 

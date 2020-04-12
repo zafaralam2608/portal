@@ -6,7 +6,7 @@ import com.project.portal.model.User;
 
 public interface UserService {
 
-	Optional<User> findById(String id);
+	Optional<User> findById(long id);
 	
 	User createUser(User user);
 
