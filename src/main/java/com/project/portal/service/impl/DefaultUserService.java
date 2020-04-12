@@ -2,6 +2,7 @@ package com.project.portal.service.impl;
 
 import java.util.Optional;
 
+import com.project.portal.dto.user.UserRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,12 @@ public class DefaultUserService implements UserService {
 
 	public User createUser(User user) {
 		return userRepository.save(user);
+	}
+
+	@Override
+	public User registerUser(UserRegistration userDto) {
+		User user = convertDtoToDao(userDto);
+		return userRepository.saveAndFlush(user);
 	}
 
 }
