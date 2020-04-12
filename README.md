@@ -1,2 +1,2 @@
 # portal
-Simple application with User model called by REST
+Spring boot application
