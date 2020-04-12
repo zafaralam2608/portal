@@ -1,12 +1,14 @@
 package com.project.portal.model;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import org.springframework.data.annotation.Id;
-
+@Entity
 public class User {
 	@Id
-	private String id;
+	@GeneratedValue
+	private long id;
 	
 	private String username;
 	
@@ -18,13 +20,13 @@ public class User {
 	
 	private String email;
 	
-	private Date createdDate;
+	private String createdDate;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -68,11 +70,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 
