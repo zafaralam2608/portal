@@ -5,37 +5,42 @@
     <title>User Registration</title>
 </head>
 <body>
-    <h1 th:text="#{label.form.title}">form</h1>
-    <form action="/" th:object="${user}" method="POST" enctype="utf8">
+    <h1 th:text=Register>form</h1>
+    <form th:action="@{/register}" th:object="${user}" method="post">
         <div>
-            <label th:text="#{label.user.first}">first</label>
+            <label>Username</label>
+            <input th:field="*{username}">
+            <p th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
+        </div>
+        <div>
+            <label>First Name</label>
             <input th:field="*{firstName}">
             <p th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label th:text="#{label.user.middle}">middle</label>
+            <label>Middle Name</label>
             <input th:field="*{middleName}">
         </div>
         <div>
-            <label th:text="#{label.user.last}">first</label>
+            <label>Last Name</label>
             <input th:field="*{lastName}">
             <p th:each="error: ${#fields.errors('lastName')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label th:text="#{label.user.email}">first</label>
+            <label>Email Address</label>
             <input th:field="*{email}">
             <p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label th:text="#{label.user.password}">first</label>
+            <label>Password</label>
             <input th:field="*{password}">
             <p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label th:text="#{label.user.matchPassword}">first</label>
+            <label>Confirm Password</label>
             <input th:field="*{matchPassword}">
         </div>
-        <button type="submit" th:text="#{label.form.submit}">submit</button>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

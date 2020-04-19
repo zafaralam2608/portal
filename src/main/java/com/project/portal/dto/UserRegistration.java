@@ -1,14 +1,16 @@
-package com.project.portal.dto.user;
+package com.project.portal.dto;
 
+
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
-@Setter
+@Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class UserRegistration {
+
+    @NonNull
+    private String username;
 
     @NonNull
     private String firstName;
