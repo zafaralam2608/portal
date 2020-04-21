@@ -1,13 +1,11 @@
 package com.project.portal.repo;
 
-import com.project.portal.model.User;
-
+import com.project.portal.model.Privilege;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface PrivilegeRepository extends JpaRepository<Privilege, Long> {
 
-    User findByUsername(String username);
-
+    Privilege findByName(String name);
 }

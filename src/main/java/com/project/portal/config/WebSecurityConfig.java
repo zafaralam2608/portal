@@ -1,6 +1,6 @@
 package com.project.portal.config;
 
-import com.project.portal.service.impl.DefaultUserService;
+import com.project.portal.security.DefaultUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder;
 
     @Autowired
-    DefaultUserService userDetailsService;
+    DefaultUserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
