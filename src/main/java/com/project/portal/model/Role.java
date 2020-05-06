@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,7 +33,7 @@ public class Role {
     private Collection<User> users;
 
     @ToString.Exclude
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="ROLE_PRIVILEGE",
                 joinColumns = @JoinColumn(name="ROLE_ID", referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name="PRIVILEGE_ID",referencedColumnName = "id")

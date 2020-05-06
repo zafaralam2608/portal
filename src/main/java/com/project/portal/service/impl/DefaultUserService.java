@@ -1,6 +1,7 @@
 package com.project.portal.service.impl;
 
 import com.project.portal.dto.UserRegistration;
+import com.project.portal.exceptions.UserAlreadyExistsException;
 import com.project.portal.model.Role;
 import com.project.portal.model.User;
 import com.project.portal.repo.RoleRepository;
@@ -33,7 +34,9 @@ public class DefaultUserService implements UserService {
 
     @Override
     @Transactional
-    public void registerUser(UserRegistration userDto) {
+    public void registerUser(UserRegistration userDto) throws UserAlreadyExistsException {
+        if (userRepository.findByUsername(userDto.getUsername()) != null)
+            throw new UserAlreadyExistsException("A user already exists with this username ");
         User user = convertDtoToDao(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");

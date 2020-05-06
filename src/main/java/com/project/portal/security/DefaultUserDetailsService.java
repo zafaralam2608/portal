@@ -6,7 +6,6 @@ import com.project.portal.model.User;
 import com.project.portal.repo.PrivilegeRepository;
 import com.project.portal.repo.RoleRepository;
 import com.project.portal.repo.UserRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,9 +27,6 @@ public class DefaultUserDetailsService implements UserDetailsService {
 
     @Autowired
     PrivilegeRepository privilegeRepository;
-
-    @Autowired
-    ModelMapper modelMapper;
 
     @PostConstruct
     private void init(){

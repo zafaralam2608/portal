@@ -1,6 +1,7 @@
 package com.project.portal.service;
 
 import com.project.portal.dto.UserRegistration;
+import com.project.portal.exceptions.UserAlreadyExistsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,5 +9,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserService {
 
     @Transactional
-    void registerUser(UserRegistration user);
+    void registerUser(UserRegistration user) throws UserAlreadyExistsException;
 }

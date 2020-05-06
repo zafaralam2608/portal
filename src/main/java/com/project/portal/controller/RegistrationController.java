@@ -1,6 +1,7 @@
 package com.project.portal.controller;
 
 import com.project.portal.dto.UserRegistration;
+import com.project.portal.exceptions.UserAlreadyExistsException;
 import com.project.portal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @RestController
 public class RegistrationController {
@@ -25,8 +27,14 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public ModelAndView registerUser(@ModelAttribute("user") UserRegistration user, HttpServletRequest request, Errors errors) {
-        userService.registerUser(user);
-        return new ModelAndView("success");
+    public ModelAndView registerUser(@ModelAttribute("user") @Valid UserRegistration user, HttpServletRequest request, Errors errors) {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            userService.registerUser(user);
+            modelAndView.setViewName("success");
+        } catch (UserAlreadyExistsException e) {
+            modelAndView.addObject("error");
+        }
+        return modelAndView;
     }
 }

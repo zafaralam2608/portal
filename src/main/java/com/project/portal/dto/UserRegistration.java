@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 @Data
 @NoArgsConstructor
 public class UserRegistration {
@@ -15,9 +18,6 @@ public class UserRegistration {
     @NonNull
     private String firstName;
 
-    private String middleName;
-
-    @NonNull
     private String lastName;
 
     @NonNull
@@ -25,6 +25,7 @@ public class UserRegistration {
 
     private String matchPassword;
 
-    @NonNull
+    @NotBlank
+    @Email
     private String email;
 }
