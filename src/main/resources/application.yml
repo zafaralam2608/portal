@@ -2,7 +2,6 @@ spring:
     datasource:
         url: jdbc:h2:file:C:/workspace/portal
         driverClassName: org.h2.Driver
-        initialize: false
         name: portal
         password: password
         username: sa
