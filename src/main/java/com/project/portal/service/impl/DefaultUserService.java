@@ -37,6 +37,8 @@ public class DefaultUserService implements UserService {
     public void registerUser(UserRegistration userDto) throws UserAlreadyExistsException {
         if (userRepository.findByUsername(userDto.getUsername()) != null)
             throw new UserAlreadyExistsException("A user already exists with this username ");
+        if (userRepository.findByEmail(userDto.getEmail()) != null)
+            throw new UserAlreadyExistsException("A user already exists with this email ");
         User user = convertDtoToDao(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");

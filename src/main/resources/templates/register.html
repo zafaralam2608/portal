@@ -9,17 +9,17 @@
     <form th:action="@{/register}" th:object="${user}" method="post">
         <div>
             <label>Username</label>
-            <input th:field="*{username}" type="text" required>
-            <p th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
+             <input th:field="*{username}" type="text" required/>
+            <p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
         </div>
         <div>
             <label>First Name</label>
-            <input th:field="*{firstName}" required>
+            <input th:field="*{firstName}" type="text" required/>
             <p th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
         </div>
         <div>
             <label>Last Name</label>
-            <input th:field="*{lastName}">
+            <input th:field="*{lastName}" type="text"/>
             <p th:each="error: ${#fields.errors('lastName')}" th:text="${error}">Validation error</p>
         </div>
         <div>

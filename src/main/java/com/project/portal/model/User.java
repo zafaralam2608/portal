@@ -3,6 +3,8 @@ package com.project.portal.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Data
@@ -31,7 +34,11 @@ public class User {
 
     private String email;
 
-    private String createdDate;
+    @CreationTimestamp
+    private Date created;
+
+    @UpdateTimestamp
+    private Date updated;
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER)
