@@ -3,6 +3,7 @@ package com.project.portal.controller;
 import com.project.portal.dto.UserRegistration;
 import com.project.portal.exceptions.UserAlreadyExistsException;
 import com.project.portal.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class RegistrationController {
 
-    @Autowired
-    UserService userService;
+    final UserService userService;
 
     @GetMapping("/register")
     @ModelAttribute("user")

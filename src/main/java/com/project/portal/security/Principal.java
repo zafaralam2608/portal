@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Principal implements UserDetails {
 
-    private final User user;
+    private final transient User user;
 
     public Principal(User user) {
         this.user = user;

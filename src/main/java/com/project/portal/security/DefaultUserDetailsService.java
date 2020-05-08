@@ -6,6 +6,7 @@ import com.project.portal.model.User;
 import com.project.portal.repo.PrivilegeRepository;
 import com.project.portal.repo.RoleRepository;
 import com.project.portal.repo.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,16 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class DefaultUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    UserRepository userRepository;
+    final UserRepository userRepository;
 
-    @Autowired
-    RoleRepository roleRepository;
+    final RoleRepository roleRepository;
 
-    @Autowired
-    PrivilegeRepository privilegeRepository;
+    final PrivilegeRepository privilegeRepository;
 
     @PostConstruct
     private void init(){

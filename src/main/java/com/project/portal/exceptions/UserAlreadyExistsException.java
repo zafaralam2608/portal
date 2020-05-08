@@ -1,6 +1,6 @@
 package com.project.portal.exceptions;
 
-public class UserAlreadyExistsException extends Throwable {
+public class UserAlreadyExistsException extends Exception {
 
     public UserAlreadyExistsException(String s) {
         super(s);

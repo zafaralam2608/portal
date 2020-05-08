@@ -7,6 +7,7 @@ import com.project.portal.model.User;
 import com.project.portal.repo.RoleRepository;
 import com.project.portal.repo.UserRepository;
 import com.project.portal.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,19 +19,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class DefaultUserService implements UserService {
 
-    @Autowired
-    ModelMapper modelMapper;
+    final ModelMapper modelMapper;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    UserRepository userRepository;
+    final UserRepository userRepository;
 
-    @Autowired
-    RoleRepository roleRepository;
+    final RoleRepository roleRepository;
 
     @Override
     @Transactional
