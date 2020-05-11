@@ -7,16 +7,18 @@ import com.project.portal.model.User;
 import com.project.portal.repo.RoleRepository;
 import com.project.portal.repo.UserRepository;
 import com.project.portal.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 @Service
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
@@ -40,7 +42,7 @@ public class DefaultUserService implements UserService {
         User user = convertDtoToDao(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(Arrays.asList(userRole));
+        user.setRoles(Collections.singletonList(userRole));
         userRepository.save(user);
     }
 

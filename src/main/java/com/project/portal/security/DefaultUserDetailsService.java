@@ -6,16 +6,18 @@ import com.project.portal.model.User;
 import com.project.portal.repo.PrivilegeRepository;
 import com.project.portal.repo.RoleRepository;
 import com.project.portal.repo.UserRepository;
-import lombok.RequiredArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor(onConstructor_ = @Autowired)

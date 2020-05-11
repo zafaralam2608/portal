@@ -1,12 +1,12 @@
 package com.project.portal.dto;
 
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
