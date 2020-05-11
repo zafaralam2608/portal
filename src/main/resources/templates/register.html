@@ -6,29 +6,29 @@
 </head>
 <body>
     <h1 th:text=Register>form</h1>
-    <form th:action="@{/register}" th:object="${user}" method="post">
+    <form method="post" th:action="@{/register}" th:object="${user}">
         <div>
-            <label>Username : <input th:field="*{username}" type="text" required/></label>
+            <label>Username : <input required type="text"  th:field="*{username}"/></label>
             <p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label>First Name : <input th:field="*{firstName}" type="text" required/></label>
+            <label>First Name : <input required type="text"  th:field="*{firstName}"/></label>
             <p th:each="error: ${#fields.errors('firstName')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label>Last Name : <input th:field="*{lastName}" type="text"/></label>
+            <label>Last Name : <input type="text" th:field="*{lastName}"/></label>
             <p th:each="error: ${#fields.errors('lastName')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label>Email Address : <input th:field="*{email}" required type="email"></label>
+            <label>Email Address : <input required type="email" th:field="*{email}"></label>
             <p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label>Password : <input th:field="*{password}" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></label>
+            <label>Password : <input required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{password}"></label>
             <p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
         </div>
         <div>
-            <label>Confirm Password : <input th:field="*{matchPassword}" required type="password"></label>
+            <label>Confirm Password : <input required type="password" th:field="*{matchPassword}"/></label>
         </div>
         <button type="submit">Submit</button>
     </form>
