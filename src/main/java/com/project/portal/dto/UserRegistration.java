@@ -1,21 +1,23 @@
-package com.project.portal.dto.user;
+package com.project.portal.dto;
 
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
-@Setter
+@Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class UserRegistration {
+
+    @NonNull
+    private String username;
 
     @NonNull
     private String firstName;
 
-    private String middleName;
-
-    @NonNull
     private String lastName;
 
     @NonNull
@@ -23,6 +25,7 @@ public class UserRegistration {
 
     private String matchPassword;
 
-    @NonNull
+    @NotBlank
+    @Email
     private String email;
 }

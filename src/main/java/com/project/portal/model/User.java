@@ -1,88 +1,50 @@
 package com.project.portal.model;
 
+import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class User {
-	@Id
-	@GeneratedValue
-	private long id;
-	
-	private String username;
-	
-	private String password;
-	
-	private String firstName;
-	
-	private String lastName;
-	
-	private String email;
-	
-	private String createdDate;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	public long getId() {
-		return id;
-	}
+    private String username;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    private String password;
 
-	public String getUsername() {
-		return username;
-	}
+    private String firstName;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private String lastName;
 
-	public String getPassword() {
-		return password;
-	}
+    private String email;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @CreationTimestamp
+    private Date created;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @UpdateTimestamp
+    private Date updated;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", createdDate=" + createdDate + "]";
-	}
-
-	
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "USER_ROLE",
+            joinColumns = @JoinColumn(name="USER_ID",referencedColumnName="id"),
+            inverseJoinColumns = @JoinColumn(name="ROLE_ID",referencedColumnName="id")
+    )
+    private Collection<Role> roles;
 }
