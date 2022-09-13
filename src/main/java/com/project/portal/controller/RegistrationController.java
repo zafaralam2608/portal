@@ -1,9 +1,5 @@
 package com.project.portal.controller;
 
-import com.project.portal.dto.UserRegistration;
-import com.project.portal.exceptions.UserAlreadyExistsException;
-import com.project.portal.service.UserService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -15,27 +11,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import lombok.RequiredArgsConstructor;
+import com.project.portal.dto.UserRegistration;
+import com.project.portal.exceptions.UserAlreadyExistsException;
+import com.project.portal.service.UserService;
+
+import lombok.extern.log4j.Log4j2;
 
 @RestController
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
+@Log4j2
 public class RegistrationController {
 
-    final UserService userService;
+    /** The service dependency. */
+    @Autowired
+    private UserService userService;
 
+    /**
+     * Gets a template for registration.
+     *
+     * @return user registration resource
+     */
     @GetMapping("/register")
     @ModelAttribute("user")
     public UserRegistration registrationForm() {
         return new UserRegistration();
     }
 
+    /**
+     * Saves a user registration.
+     *
+     * @param user the registration resource
+     * @param request the servlet request
+     * @param errors the error object
+     * @return the completion message
+     */
     @PostMapping("/register")
-    public ModelAndView registerUser(@ModelAttribute("user") @Valid UserRegistration user, HttpServletRequest request, Errors errors) {
+    public ModelAndView registerUser(
+            @ModelAttribute("user") @Valid final UserRegistration user,
+            final HttpServletRequest request, final Errors errors) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             userService.registerUser(user);
             modelAndView.setViewName("success");
         } catch (UserAlreadyExistsException e) {
+            log.error("Failed to register user. ", e);
             modelAndView.addObject("error");
         }
         return modelAndView;

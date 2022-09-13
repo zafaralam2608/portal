@@ -11,33 +11,53 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import lombok.RequiredArgsConstructor;
-
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    final PasswordEncoder passwordEncoder;
+    /** The dependency for PasswordEncoder. */
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    final DefaultUserDetailsService userDetailsService;
+    /** The dependency for UserDetailsService. */
+    @Autowired
+    private DefaultUserDetailsService userDetailsService;
 
+    /**
+     * The method to configure application authentication.
+     *
+     * @param auth the authentication object
+     */
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+    protected void configure(final AuthenticationManagerBuilder auth)
+            throws Exception {
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder);
     }
 
+    /**
+     * The method to configure application security.
+     *
+     * @param http the http object
+     */
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/portal","/register").permitAll()
+                .antMatchers("/portal", "/register").permitAll()
                 .antMatchers("/*").authenticated()
-                .and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/home");
+                .and()
+                .formLogin().loginPage("/login").permitAll()
+                .defaultSuccessUrl("/home");
     }
 
+    /**
+     * The method to configure web security.
+     *
+     * @param web the web object
+     */
     @Override
-    public void configure(WebSecurity web) {
+    public void configure(final WebSecurity web) {
         web
                 .ignoring()
                 .antMatchers("/h2-console/**");

@@ -21,22 +21,28 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class Role {
 
+    /** The unique id. */
     @Id
     @GeneratedValue
     private Long id;
 
+    /** The roll name. */
     @NonNull
     private String name;
 
+    /** The linked users. */
     @ToString.Exclude
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 
+    /** The linked privileges. */
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="ROLE_PRIVILEGE",
-                joinColumns = @JoinColumn(name="ROLE_ID", referencedColumnName = "id"),
-                inverseJoinColumns = @JoinColumn(name="PRIVILEGE_ID",referencedColumnName = "id")
+    @JoinTable(name = "ROLE_PRIVILEGE",
+        joinColumns = @JoinColumn(
+                name = "ROLE_ID", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(
+                name = "PRIVILEGE_ID", referencedColumnName = "id")
     )
     private Collection<Privilege> privileges;
 
